@@ -1,0 +1,86 @@
+class Vector:
+    def __init__(self, vector):
+        self.vector = list(vector)
+
+    def __iter__(self):
+        #return self.iteration ??
+        self.iteration = 0
+        return self
+
+    def __next__(self):
+        if self.iteration < self.__len__():
+            self.iteration += 1
+            return self.iteration - 1
+        else:
+            raise StopIteration
+
+    def __len__(self):
+        return len(self.vector)
+
+    def __getitem__(self, item):
+        return self.vector[item]
+
+    def sum(self, vec2):
+        if len(self.vector) != len(vec2):
+            print("Bad input!")
+            return
+        for index in range(0, len(self.vector)):
+            self.vector[index] += vec2[index]
+
+    def sub(self, vec2):
+        if len(self.vector) != len(vec2):
+            print("Bad input!")
+            return
+        for index in range(0, len(self.vector)):
+            self.vector[index] -= vec2[index]
+
+    def mul_const(self, const):
+        for index in range(0, len(self.vector)):
+            self.vector[index] *= const
+
+    def mul_scal(self, vec2):
+        if len(self.vector) != len(vec2):
+            print("Bad input!")
+            return
+        result = 0
+        for index in range(0, len(self.vector)):
+            result += vec2[index] * self.vector[index]
+        return result
+
+    def compare(self, vec2):
+        if len(self.vector) != len(vec2):
+            print("Bad input!")
+            return
+        for index in range(0, len(self.vector)):
+            if self.vector[index] != vec2[index]:
+                return False
+        return True
+
+    def len(self):
+        result = 0;
+        for arg in self.vector:
+            result += arg ** 2
+        return result ** (1/2)
+
+    def __str__(self):
+        string = ""
+        for arg in self.vector:
+            string += str(arg) + ", "
+        return string
+
+
+vec = Vector([-3, 4, 5, 10])
+vec2 = Vector([0, 7, 2, 3])
+
+vec.sum(vec2)
+print(vec)
+vec.sub(vec2)
+print(vec)
+vec.mul_scal(vec2)
+print(vec)
+vec.mul_const(2)
+print(vec)
+print(vec.compare(vec2))
+vec3 = vec
+print(vec.compare(vec3))
+print(vec.len())
