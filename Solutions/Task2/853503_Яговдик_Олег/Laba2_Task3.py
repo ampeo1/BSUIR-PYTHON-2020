@@ -40,6 +40,7 @@ class Vector:
             return
         for index in range(0, len(self.vector)):
             self.vector[index] += vec2[index]
+        return self.__str__()
 
     def sub(self, vec2):
         if len(self.vector) != len(vec2):
@@ -47,10 +48,12 @@ class Vector:
             return
         for index in range(0, len(self.vector)):
             self.vector[index] -= vec2[index]
+        return self.__str__()
 
     def mul_const(self, const):
         for index in range(0, len(self.vector)):
             self.vector[index] *= const
+        return self.__str__()
 
     def mul_scal(self, vec2):
         if len(self.vector) != len(vec2):
@@ -82,22 +85,4 @@ class Vector:
         string = ""
         for arg in self.vector:
             string += str(arg) + ", "
-        return string
-
-
-vec = Vector([-3, 4, 5, 10])
-vec2 = Vector([0, 7, 2, 3])
-
-vec.sum(vec2)
-print(vec)
-vec.sub(vec2)
-print(vec)
-vec.mul_scal(vec2)
-print(vec)
-vec.mul_const(2)
-print(vec)
-print(vec.compare(vec2))
-vec3 = vec
-print(vec.compare(vec3))
-print(vec.len())
-print(vec.len())
+        return string[:-2]
