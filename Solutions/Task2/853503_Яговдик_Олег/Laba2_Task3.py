@@ -1,9 +1,23 @@
+def cached(func):
+    data = {}
+
+    def wrapper(self):
+        if data != {}:
+            for key, value in data.items():
+                if key == self.__str__():
+                    return value
+        data[self.__str__()] = func(self)
+        return data.get(self.__str__())
+
+    return wrapper
+
+
 class Vector:
     def __init__(self, vector):
         self.vector = list(vector)
 
     def __iter__(self):
-        #return self.iteration ??
+        # return self.iteration ??
         self.iteration = 0
         return self
 
@@ -56,11 +70,13 @@ class Vector:
                 return False
         return True
 
+
+    @cached
     def len(self):
-        result = 0;
+        result = 0
         for arg in self.vector:
             result += arg ** 2
-        return result ** (1/2)
+        return result ** (1 / 2)
 
     def __str__(self):
         string = ""
@@ -83,4 +99,5 @@ print(vec)
 print(vec.compare(vec2))
 vec3 = vec
 print(vec.compare(vec3))
+print(vec.len())
 print(vec.len())
