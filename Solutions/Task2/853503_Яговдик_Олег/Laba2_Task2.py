@@ -19,7 +19,7 @@ class MyJson:
             if isinstance(arg, dict):
                 data.append(self.to_json_dict(arg))
         string = ', '.join(data)
-        return ' [ ' + string + ' ]'
+        return '[' + string + ']'
 
     def to_json_str_bool_None_int_float(self, obj):
         if isinstance(obj, bool):
@@ -49,7 +49,7 @@ class MyJson:
             if isinstance(value, dict):
                 data.append(self.to_json_record(key, self.to_json_dict(value)))
         string = ', '.join(data)
-        return ' { ' + string + ' }'
+        return '{' + string + '}'
 
     def to_json_record(self, key, value):
         return f'"{key}": {value}'
