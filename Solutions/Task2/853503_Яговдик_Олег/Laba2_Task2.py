@@ -6,8 +6,6 @@ class MyJson:
             return self.to_json_str_bool_None_int_float(obj)
         elif isinstance(obj, dict):
             return self.to_json_dict(obj)
-        elif isinstance(obj, (int, str, bool, type(None), float)):
-            return self.to_json_str_bool_None_int_float(obj)
 
     def to_json_list_tuple(self, obj):
         data = []
@@ -31,11 +29,6 @@ class MyJson:
             return '{}'.format(obj)
         elif isinstance(obj, str):
             return '"{}"'.format(obj)
-        elif isinstance(obj, bool):
-            if obj:
-                return 'true'
-            else:
-                return 'false'
         elif isinstance(obj, type(None)):
             return 'null'
 
@@ -53,8 +46,3 @@ class MyJson:
 
     def to_json_record(self, key, value):
         return f'"{key}": {value}'
-
-
-json = MyJson()
-test = [True, False, 523, 43.21, {"Town": "Minsk", "aaa": 32}, [222, 111]]
-print(json.to_json(test))

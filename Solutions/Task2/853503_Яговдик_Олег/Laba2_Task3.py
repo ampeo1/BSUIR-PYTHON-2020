@@ -14,7 +14,14 @@ def cached(func):
 
 class Vector:
     def __init__(self, vector):
-        self.vector = list(vector)
+        arr = list(vector)
+        self.vector = []
+        for index in range(0, len(arr)):
+            try:
+                arg = int(arr[index])
+            except ValueError:
+                continue
+            self.vector.append(arg);
 
     def __iter__(self):
         # return self.iteration ??
@@ -73,9 +80,8 @@ class Vector:
                 return False
         return True
 
-
     @cached
-    def len(self):
+    def length(self):
         result = 0
         for arg in self.vector:
             result += arg ** 2
