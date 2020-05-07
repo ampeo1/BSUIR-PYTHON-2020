@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Список фильмов</h1>
+
+    {% if film_list %}
+    <ul>
+
+      {% for film in film_list %}
+      <li>
+        <a href="{{ film.get_absolute_url }}">{{ film.name }}</a> ({{film.producer}})
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>Нет фильмов.</p>
+    {% endif %}       
+{% endblock %}

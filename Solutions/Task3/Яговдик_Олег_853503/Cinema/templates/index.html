@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Кинотеатр</h1>
+  <p>На данном сайте хранятся:</p>
+  <ul>
+    <li><strong>Фильмов:</strong> {{ num_films }}</li>
+    <li><strong>Режесёров:</strong> {{ num_producer }}</li>
+  </ul>
+
+{% endblock %}
+
+{% block edit %}
+    {% if perms.catalog.admin %}
+        <a href="{% url 'film-create' %}">Добавить фильм</a>
+        <a href="{% url 'producer-create' %}">Добавить режессёра</a>
+        <a href="{% url 'genre-create' %}">Добавить жанр</a>
+    {% endif %}
+{% endblock %}

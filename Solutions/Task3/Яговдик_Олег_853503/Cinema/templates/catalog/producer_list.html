@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Список режессёров</h1>
+
+    {% if producer_list %}
+    <ul>
+
+      {% for producer in producer_list %}
+      <li>
+        <a href="{{ producer.get_absolute_url }}">{{ producer.name }}</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>Нет режессёров.</p>
+    {% endif %}       
+{% endblock %}

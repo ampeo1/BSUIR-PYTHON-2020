@@ -1,0 +1,9 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Название: {{ producer.name }}</h1>
+    <img src="{{ producer.photo.url }}" >
+    <p><strong>Биография:</strong> {{ producer.biography }}</p>
+    <p><a href="{{ producer.get_delete }}">Удалить</a></p>
+    <p><a href="{{ producer.get_update }}">Изменить</a></p>
+{% endblock %}
